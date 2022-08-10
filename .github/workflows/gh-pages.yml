@@ -15,22 +15,17 @@ jobs:
           submodules: true  # Fetch Hugo themes (true OR recursive)
           fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
 
-      - name: 🔧 Install tools
-        run: |
-          sudo apt install curl jq
-      - name: Use Node.js
-        uses: actions/setup-node@master
+#      - name: Use Node.js
+#        uses: actions/setup-node@master
+#        with:
+#          node-version: 10.x
+#      - run: npm i -g postcss postcss-cli autoprefixer
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
         with:
-          node-version: 10.x
-      - run: npm i -g postcss postcss-cli autoprefixer
-      - name: 🤵 Install Hugo
-        run: |
-          HUGO_VERSION=$(curl -s https://api.github.com/repos/gohugoio/hugo/releases/latest | jq -r '.tag_name')
-          mkdir tmp/ && cd tmp/
-          curl -sSL https://github.com/gohugoio/hugo/releases/download/${HUGO_VERSION}/hugo_extended_${HUGO_VERSION: -6}_Linux-64bit.tar.gz | tar -xvzf-
-          sudo mv hugo /usr/local/bin/
-          cd .. && rm -rf tmp/
-          hugo version
+          hugo-version: 'latest'
+          extended: true
+
       - name: Build
         run: hugo --minify
 
