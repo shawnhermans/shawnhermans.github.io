@@ -23,8 +23,8 @@ pygmentsCodefences       = true
     rss                  = "Shawn Hermans"
 
 [[params.videoBackground.sources]]
-    source  = "/background.mp4"
-    type    = "video/mp4"
+    source  = "/background.webm"
+    type    = 'video/webm;codecs="vp8"'
     poster  = "/background.jpg"
 [params.videoBackground]
     overlay = "rgba(0, 0, 0, 0.4)" # optional
